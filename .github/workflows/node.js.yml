@@ -24,6 +24,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: pm2 restart express-project
+    - name: Test v1 Service
+        working-directory: ./v1
+        run: |
+          npm ci
+          pm2 restart express-project
+    - name: Test v2 Service
+        working-directory: ./v2
+        run: |
+          npm ci
+          pm2 restart express-project
+    # - run: npm ci
+    # - run: pm2 restart express-project
 
